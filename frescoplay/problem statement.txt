@@ -1,0 +1,146 @@
+This question contains a dataset on provincial statistics on the employment rate in Canada. Data in the file is presented according to month, province, gender, and type of employment (full-time, part-time, and all).
+
+The dataset provided in the question contains data on different provinces of canada like Ontario, British columbia, Nova scotia etc.
+
+You are required to perform different ETL operations on the data as per the steps defined
+
+Important Instructions:
+ -> To solve this problem, We have provided the templates  for pyspark -> challenge.py and for scala -> challenge.scala 
+ -> In the challenge files the input path and output path is already set for each function.
+ -> The file names should be saved EXACTLY as given in the instructions.
+ -> All the files should be saved along with the header information
+ -> Choose the INSTALL option in Run tab in Toolbar to install the required dependencies
+ -> Choose the RUN TESTS [Black button at the bottom right] or the Test option from Run tab in Toolbar to run the tests
+ -> Choose the SUBMIT [Green button at the bottom right] to submit the project for evaluation.
+
+
+Note:
+ -> Run this command spark-shell to use Scala through terminal
+ -> Run this command pyspark to use Pyspark through terminal
+ -> Installing dependencies may take some time. Please be patient with the environment.
+ -> The output data frame of the previous step is to be used as input for the next step
+
+-------------------
+Problem Statement
+-------------------
+
+Task 1:
+
+read_data
+
+complete the following opertions in the read_data function.
+
+The following are the parameters : -
+
+for spark_session : spark
+
+for input_file : input_file
+
+for Schema : Schema
+
+- Read the Employment_data.csv file using the spark csv reader with the given Schema.
+
+- In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+Task 2:
+
+clean_data:
+
+complete the following opertions in the clean_data funtion.
+
+The following are the parameters : -
+
+    input_df : input_path(Final dataframe of read_data function)
+
+
+-> Drop all the null value.
+
+-> Drop the duplicate values.
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+Task 3:
+
+
+latest_empolyees
+
+complete the following opertions in the latest_empolyees funtion.
+
+The following are the parameters : -
+
+    input_file : input_path (final dataframe of clean_data function)
+
+-> Create a column 'Year' and store the year values from the 'date' column.
+
+-> Create a column 'Month' and store the month values from the 'date' column.
+
+-> Drop the 'date' column.
+
+-> Order it by year and month in descending order.
+
+-> Create a column 'Month_Name' and store the names of the month.
+[if the month=1 then Month_Name is 'January',month=2 then Month_Name is 'February']
+Note : the First letter needs to be capital and follwed by small letters.
+
+-> Drop the 'Month' column.
+
+-> Fetch the top 1000 empolyees.
+
+-> Columns to be fetched: Variable,Sex,Alberta,British_Columbia,Manitoba,Brunswick,Newfoundland_and_Labrador,Nova_Scotia,Ontario,Prince_Edward_Island,Quebec,Saskatchewan,Year,Month_Name
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+
+Task 4:
+
+Gender_Wise 
+
+complete the following opertions in the Gender_Wise funtion.
+
+The following are the parameters : -
+
+    input_file : input_path (final dataframe of latest_empolyees function)
+
+-> Group the data by sex and find the sum of employment in each province .
+
+-> Round these values by 2 decimal values.
+
+-> Columns to be fetched:
+Sex,Sum_Alberta,Sum_British_Columbia,Sum_Manitoba,Sum_Brunswick,Sum_Newfoundland_and_Labrador,Sum_Nova_Scotia,Sum_Ontario,Sum_Prince_Edward_Island,Sum_Quebec,Sum_Saskatchewan
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+
+
+Task 5:
+
+loading_data
+
+complete the following operations in  the load_data function.
+
+The following are the parameters :
+
+    data : All the tasks output data frame.
+
+    outputpath: Location where the file needs to be saved 
+
+
+-> Write a code to store the outputs to the respective locations.
+
+-> Output files should be a single partition CSV file with header.
+
+-------------------------------------------------------------------------
+
+Output directory for the output files: -
+
+latest_empolyees : /Project/challenge/output/latest_empolyees.
+
+Gender_Wise : /Project/challenge/output/Gender_Wise.
+
+Input File: -
+
+You are given a Employment_data.csv file inside  ~/Project/challenge/inputfile/ .
+
+Note :
+
+The sample test case does not represent the main test. The actual test case will run only after clicking on SUBMIT button.
